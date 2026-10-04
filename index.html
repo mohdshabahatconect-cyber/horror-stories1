@@ -1,0 +1,3210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DarkTales | Horror Stories</title>
+
+<meta name="description"
+content="DarkTales - Read terrifying horror stories, ghost stories, haunted houses and urban legends.">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:#eee;
+    font-family:Arial,Helvetica,sans-serif;
+    line-height:1.7;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px 20px;
+    position:relative;
+    overflow:hidden;
+    background:
+    radial-gradient(circle at center,#350000 0%,#120000 30%,#050505 70%);
+}
+
+.hero:before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    radial-gradient(circle at 20% 30%,rgba(255,0,0,.12),transparent 25%),
+    radial-gradient(circle at 80% 70%,rgba(255,0,0,.08),transparent 25%);
+    animation:pulse 5s infinite alternate;
+}
+
+@keyframes pulse{
+    from{opacity:.3}
+    to{opacity:1}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.logo{
+    font-family:Georgia,serif;
+    font-size:clamp(65px,13vw,150px);
+    color:#b40000;
+    letter-spacing:4px;
+    text-shadow:
+    0 0 10px #ff0000,
+    0 0 35px #700000,
+    0 5px 20px #000;
+}
+
+.hero h2{
+    font-size:clamp(18px,3vw,30px);
+    margin:15px 0;
+}
+
+.hero p{
+    color:#999;
+    max-width:650px;
+    margin:auto;
+}
+
+.enter-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 30px;
+    background:#760000;
+    color:#fff;
+    text-decoration:none;
+    border-radius:6px;
+    font-weight:bold;
+    border:1px solid #a00000;
+    transition:.3s;
+}
+
+.enter-btn:hover{
+    background:#c00000;
+    box-shadow:0 0 30px rgba(255,0,0,.4);
+}
+
+/* NAV */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(5,5,5,.96);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #222;
+    padding:15px 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.nav-logo{
+    font-family:Georgia,serif;
+    font-size:28px;
+    color:#c00000;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+/* MAIN */
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.section-title h2{
+    font-family:Georgia,serif;
+    color:#c00000;
+    font-size:52px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+/* SEARCH */
+
+.search-box{
+    max-width:700px;
+    margin:0 auto 25px;
+}
+
+.search-box input{
+    width:100%;
+    padding:17px 20px;
+    background:#101010;
+    color:#fff;
+    border:1px solid #333;
+    border-radius:8px;
+    outline:none;
+    font-size:16px;
+}
+
+.search-box input:focus{
+    border-color:#a00000;
+    box-shadow:0 0 15px rgba(180,0,0,.25);
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.filter{
+    padding:9px 18px;
+    border-radius:30px;
+    border:1px solid #333;
+    background:#111;
+    color:#aaa;
+    cursor:pointer;
+}
+
+.filter:hover,
+.filter.active{
+    background:#850000;
+    color:#fff;
+    border-color:#a00000;
+}
+
+/* STORIES */
+
+.stories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:linear-gradient(145deg,#121212,#080808);
+    border:1px solid #252525;
+    border-radius:12px;
+    padding:25px;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:3px;
+    background:#850000;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+    border-color:#700000;
+    box-shadow:0 15px 40px rgba(0,0,0,.7);
+}
+
+.category{
+    display:inline-block;
+    color:#ff5555;
+    border:1px solid #500000;
+    border-radius:20px;
+    padding:4px 9px;
+    font-size:11px;
+    text-transform:uppercase;
+    margin-bottom:15px;
+}
+
+.card h3{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.read-btn{
+    background:#720000;
+    color:#fff;
+    border:0;
+    padding:10px 18px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.read-btn:hover{
+    background:#bd0000;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.94);
+    z-index:999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-content{
+    width:min(850px,100%);
+    max-height:90vh;
+    overflow-y:auto;
+    background:#0d0d0d;
+    border:1px solid #650000;
+    border-radius:12px;
+    padding:35px;
+    position:relative;
+    box-shadow:0 0 70px rgba(120,0,0,.35);
+}
+
+.close{
+    position:absolute;
+    right:20px;
+    top:10px;
+    color:#777;
+    font-size:35px;
+    cursor:pointer;
+}
+
+.close:hover{
+    color:#fff;
+}
+
+.modal-content h2{
+    font-family:Georgia,serif;
+    color:#c00000;
+    font-size:42px;
+    margin-bottom:20px;
+    padding-right:30px;
+}
+
+.story-text{
+    color:#bbb;
+    white-space:pre-line;
+    font-size:16px;
+}
+
+/* ABOUT */
+
+.about{
+    margin-top:100px;
+    padding:45px 25px;
+    text-align:center;
+    border:1px solid #222;
+    border-radius:12px;
+    background:#0b0b0b;
+}
+
+.about h2{
+    font-family:Georgia,serif;
+    color:#b00000;
+    font-size:45px;
+}
+
+.about p{
+    max-width:750px;
+    margin:15px auto;
+    color:#888;
+}
+
+.about a{
+    color:#d00000;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#555;
+    border-top:1px solid #222;
+}
+
+footer span{
+    color:#a00000;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    nav{
+        padding:12px 15px;
+    }
+
+    nav a{
+        margin-left:8px;
+        font-size:12px;
+    }
+
+    .nav-logo{
+        font-size:22px;
+    }
+
+    main{
+        padding:50px 15px;
+    }
+
+    .section-title h2{
+        font-size:42px;
+    }
+
+    .modal-content{
+        padding:25px 20px;
+    }
+
+    .modal-content h2{
+        font-size:32px;
+    }
+
+    .story-text{
+        font-size:15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<header class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="logo">DarkTales</div>
+
+<h2>Stories That Should Never Be Read Alone...</h2>
+
+<p>
+Enter a world of ghosts, cursed houses, strange disappearances,
+dark forests, mysterious strangers and terrifying urban legends.
+</p>
+
+<a href="#stories" class="enter-btn">
+ENTER THE DARKNESS
+</a>
+
+</div>
+
+</header>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="nav-logo">DarkTales</div>
+
+<div>
+<a href="#home">Home</a>
+<a href="#stories">Stories</a>
+<a href="#about">About</a>
+</div>
+
+</nav>
+
+
+<main>
+
+<section id="stories">
+
+<div class="section-title">
+
+<h2>Horror Stories</h2>
+
+<p>Choose a story... if you dare.</p>
+
+</div>
+
+
+<!-- SEARCH -->
+
+<div class="search-box">
+
+<input
+type="text"
+id="search"
+placeholder="Search horror stories..."
+>
+
+</div>
+
+
+<!-- FILTERS -->
+
+<div class="filters">
+
+<button class="filter active" data-category="All">
+All
+</button>
+
+<button class="filter" data-category="Ghost">
+Ghost
+</button>
+
+<button class="filter" data-category="Haunted House">
+Haunted House
+</button>
+
+<button class="filter" data-category="Urban Legend">
+Urban Legend
+</button>
+
+<button class="filter" data-category="Psychological">
+Psychological
+</button>
+
+<button class="filter" data-category="Supernatural">
+Supernatural
+</button>
+
+</div>
+
+
+<!-- STORY CONTAINER -->
+
+<div class="stories" id="storyContainer"></div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+<h2>About DarkTales</h2>
+
+<p>
+DarkTales is a horror storytelling platform created for people
+who love mysterious, disturbing and terrifying stories.
+</p>
+
+<p>
+
+📧 Email:
+<br>
+Mohdshabahat.conect@gmail.com
+
+<br><br>
+
+📸 Instagram:
+<br>
+
+<a href="https://www.instagram.com/s_hadowtales"
+target="_blank">
+@s_hadowtales
+</a>
+
+<br><br>
+
+▶️ YouTube:
+<br>
+
+<a href="https://www.youtube.com/@Shadowtaleshorror1"
+target="_blank">
+ShadowTales Horror
+</a>
+
+<br><br>
+
+🌍 Country: India
+
+</p>
+
+</section>
+
+</main>
+
+
+<!-- STORY MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" id="close">&times;</span>
+
+<h2 id="modalTitle"></h2>
+
+<div class="story-text" id="modalStory"></div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+© 2026 <span>DarkTales</span> —
+Enter at your own risk.
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   DARKTALES — 30 HORROR STORIES
+===================================================== */
+
+const stories = [
+
+/* 01 */
+
+{
+title:"The Last Room",
+category:"Haunted House",
+excerpt:"Room 307 had been locked for twenty years. Nobody knew why.",
+content:`
+The hotel manager gave me the key to Room 307.
+
+"Nobody uses that room," he said.
+
+I laughed.
+
+The room looked completely normal.
+
+A bed.
+A mirror.
+A small wooden table.
+
+At 3:07 AM, I heard three knocks.
+
+Knock.
+
+Knock.
+
+Knock.
+
+I opened the door.
+
+Nobody was there.
+
+When I returned inside, the mirror had something written on it.
+
+RUN.
+
+I wiped the word away.
+
+Another message appeared.
+
+HE IS BEHIND YOU.
+
+I turned around.
+
+Nothing.
+
+Then I heard breathing underneath the bed.
+
+Slowly, I looked down.
+
+Two pale eyes were staring back at me.
+
+I ran from the room.
+
+The next morning, the manager was waiting.
+
+He looked terrified.
+
+"You opened Room 307?"
+
+I nodded.
+
+He whispered:
+
+"Then why are you standing here?"
+
+I looked at my hands.
+
+They were covered in dust.
+
+The manager pointed toward the hallway.
+
+A second version of me was walking toward Room 307.
+
+And it was carrying my suitcase.
+`
+},
+
+
+/* 02 */
+
+{
+title:"The Woman in the Window",
+category:"Ghost",
+excerpt:"Every night at midnight, a woman appeared in the abandoned house.",
+content:`
+Every night at exactly midnight, I saw a woman standing inside
+the window of the abandoned house across the street.
+
+She wore a white dress.
+
+She never moved.
+
+One night, I decided to take a photograph.
+
+I raised my phone.
+
+The woman disappeared.
+
+I checked the photograph.
+
+She was standing behind me.
+
+I turned around.
+
+Nobody was there.
+
+I laughed nervously and deleted the picture.
+
+The next night, she appeared again.
+
+This time she was closer to the window.
+
+The night after that, she was standing in the garden.
+
+Then she was standing beside my front door.
+
+I stopped looking outside.
+
+At 12:00 AM, someone knocked.
+
+Three slow knocks.
+
+I looked through the peephole.
+
+Nobody.
+
+Then my phone vibrated.
+
+A new photograph had appeared.
+
+It showed me looking through the peephole.
+
+The photograph had been taken from behind me.
+
+I slowly turned around.
+
+The woman was standing inside my house.
+
+She smiled.
+
+Then she pointed toward the window.
+
+Someone was standing outside.
+
+It was me.
+`
+},
+
+
+/* 03 */
+
+{
+title:"The Forest Doesn't Sleep",
+category:"Urban Legend",
+excerpt:"The villagers warned everyone never to enter after sunset.",
+content:`
+My grandfather always warned me about Black Forest.
+
+"Never enter after sunset."
+
+I never believed him.
+
+One evening, I entered the forest alone.
+
+At first, everything seemed normal.
+
+Then the birds stopped singing.
+
+The wind disappeared.
+
+Even my footsteps sounded strangely quiet.
+
+I heard footsteps behind me.
+
+I walked faster.
+
+The footsteps walked faster.
+
+I stopped.
+
+The footsteps stopped.
+
+I turned around.
+
+Nobody.
+
+Then I heard my grandfather's voice.
+
+"Come back."
+
+My grandfather had been dead for fifteen years.
+
+I ran toward the road.
+
+But every path led deeper into the forest.
+
+Hours passed.
+
+My phone showed 2%.
+
+Then I saw a small house.
+
+There was a light inside.
+
+I knocked.
+
+The door opened.
+
+My grandfather was sitting at the table.
+
+He looked exactly as he had fifteen years ago.
+
+He smiled.
+
+"You finally came back."
+
+I stepped inside.
+
+The door closed behind me.
+
+Outside, something wearing my face walked out of the forest.
+`
+},
+
+
+/* 04 */
+
+{
+title:"Don't Answer the Phone",
+category:"Psychological",
+excerpt:"The phone rang every night at exactly 2:13 AM.",
+content:`
+My phone started ringing at 2:13 AM.
+
+Unknown Number.
+
+I ignored it.
+
+The next night, the same thing happened.
+
+2:13 AM.
+
+I ignored it again.
+
+On the third night, I answered.
+
+There was silence.
+
+Then a voice whispered:
+
+"Don't look behind you."
+
+I froze.
+
+My bedroom was completely silent.
+
+I slowly looked at the mirror.
+
+Someone was standing behind me.
+
+I turned around.
+
+Nobody.
+
+The voice whispered again.
+
+"I'm not behind you."
+
+I looked at the phone.
+
+"Then where are you?"
+
+The voice laughed.
+
+"I'm inside your phone."
+
+The screen went black.
+
+I threw the phone across the room.
+
+It started ringing again.
+
+This time the caller ID showed my own number.
+
+I answered.
+
+My own voice whispered:
+
+"Tomorrow night, don't answer."
+
+The next night arrived.
+
+2:13 AM.
+
+The phone rang.
+
+I didn't touch it.
+
+Then I heard my own voice coming from underneath my bed.
+
+"Why didn't you answer?"
+
+Something grabbed my ankle.
+`
+},
+
+
+/* 05 */
+
+{
+title:"The Empty Train",
+category:"Ghost",
+excerpt:"The last train arrived with one passenger too many.",
+content:`
+I was waiting for the last train.
+
+11:59 PM.
+
+The station was completely empty.
+
+A train arrived without making any sound.
+
+I entered.
+
+One old man was sitting at the end of the carriage.
+
+He looked at me.
+
+"You shouldn't be here."
+
+I laughed nervously.
+
+The train started moving.
+
+Ten minutes passed.
+
+The train didn't stop.
+
+Twenty minutes.
+
+Still nothing.
+
+I checked my phone.
+
+No signal.
+
+Then the old man asked:
+
+"Did you check the date?"
+
+I looked at my phone.
+
+October 13, 1998.
+
+That was impossible.
+
+I was born in 2002.
+
+The old man disappeared.
+
+The lights went out.
+
+When they came back on, every seat was occupied.
+
+Hundreds of silent passengers were staring at me.
+
+All of them looked dead.
+
+The train stopped.
+
+The doors opened.
+
+A station sign said:
+
+NEXT STOP — YOUR LAST DAY.
+
+The old man appeared beside me.
+
+"Everyone gets off eventually."
+
+I stepped backward.
+
+The train doors closed.
+
+When I opened my eyes, I was standing at my own funeral.
+`
+},
+
+
+/* 06 */
+
+{
+title:"The House That Watches",
+category:"Haunted House",
+excerpt:"The house wasn't haunted. It was alive.",
+content:`
+When I bought the house, the previous owner gave me one warning.
+
+"Never close the basement door."
+
+I thought he was joking.
+
+For the first few days, everything was normal.
+
+Then the house started making noises.
+
+Footsteps.
+
+Whispers.
+
+Knocking inside the walls.
+
+One night, I closed the basement door.
+
+The entire house became silent.
+
+Then every door opened at once.
+
+The lights turned on.
+
+A voice came from the basement.
+
+"Why did you lock me out?"
+
+I opened the door.
+
+There was nothing downstairs.
+
+Only an old chair.
+
+The next morning, the chair was in my bedroom.
+
+I moved it outside.
+
+The next morning, it was beside my bed again.
+
+Then the house started whispering my name.
+
+I decided to leave.
+
+I opened the front door.
+
+There was no street outside.
+
+Only another room.
+
+The house had rearranged itself.
+
+I ran from room to room.
+
+Every door led back to the basement.
+
+The chair was waiting.
+
+Something was sitting in it.
+
+It looked exactly like me.
+
+It smiled.
+
+"You finally came home."
+`
+},
+
+
+/* 07 */
+
+{
+title:"The Girl Behind the Mirror",
+category:"Supernatural",
+excerpt:"The mirror showed a girl who didn't exist.",
+content:`
+I found the mirror at a second-hand furniture shop.
+
+It was old and covered in dust.
+
+I bought it because it was cheap.
+
+That night, I noticed something strange.
+
+My reflection moved slightly slower than I did.
+
+I raised my hand.
+
+The reflection waited two seconds.
+
+Then copied me.
+
+I stepped closer.
+
+A girl was standing behind my reflection.
+
+She had long black hair.
+
+I turned around.
+
+Nobody.
+
+I looked back at the mirror.
+
+The girl was closer.
+
+The next night, she was standing beside my reflection.
+
+Then she started writing something on the glass.
+
+HELP ME.
+
+I touched the mirror.
+
+It was warm.
+
+A hand suddenly appeared from the other side.
+
+I dropped the mirror.
+
+The glass broke.
+
+Behind it was a small photograph.
+
+It showed a family.
+
+The girl was in the picture.
+
+On the back was written:
+
+"Died in this mirror."
+
+That night, I heard crying from the broken glass.
+
+I looked down.
+
+My reflection was still standing.
+
+But I wasn't.
+`
+},
+
+
+/* 08 */
+
+{
+title:"The 3:13 AM Call",
+category:"Psychological",
+excerpt:"Someone called every night and described what would happen next.",
+content:`
+At exactly 3:13 AM, my phone rang.
+
+A man whispered:
+
+"Tomorrow you will see a black car."
+
+The call ended.
+
+The next morning, I saw a black car outside my office.
+
+The following night, the call came again.
+
+"Tomorrow you will lose your keys."
+
+I laughed.
+
+The next day, my keys disappeared.
+
+Every prediction came true.
+
+Finally, one night the voice said:
+
+"Tomorrow you will die."
+
+I stopped sleeping.
+
+I stayed inside.
+
+I locked every door.
+
+At 3:13 AM, the phone rang.
+
+I didn't answer.
+
+It rang again.
+
+Then a message appeared.
+
+YOU HAVE ONE MINUTE.
+
+I watched the clock.
+
+3:14.
+
+Nothing happened.
+
+I laughed.
+
+Then I received another message.
+
+"I said tomorrow."
+
+I looked at the date.
+
+It was still today.
+
+But my phone showed tomorrow.
+
+I realized the caller wasn't predicting the future.
+
+He was calling from it.
+
+And tomorrow had already happened.
+`
+},
+
+
+/* 09 */
+
+{
+title:"The Last Train Home",
+category:"Ghost",
+excerpt:"The conductor warned me not to get off at the wrong station.",
+content:`
+I boarded the last train home at midnight.
+
+Only the conductor was inside.
+
+He looked at me.
+
+"Where are you going?"
+
+I told him my station.
+
+He shook his head.
+
+"That station doesn't exist anymore."
+
+I laughed.
+
+Of course it did.
+
+The train moved.
+
+Outside the windows, there were no buildings.
+
+Only darkness.
+
+After thirty minutes, the train stopped.
+
+The doors opened.
+
+A woman entered.
+
+She sat opposite me.
+
+She was soaking wet.
+
+"Is this your first time?" she asked.
+
+"First time what?"
+
+She pointed outside.
+
+"This train only comes for dead people."
+
+I looked at the conductor.
+
+He was staring at me.
+
+The woman disappeared.
+
+The train stopped at my station.
+
+I stepped outside.
+
+Everything looked normal.
+
+But nobody could see me.
+
+I went home.
+
+My mother was crying.
+
+There was a photograph of me on the table.
+
+Under it were the words:
+
+DIED LAST NIGHT.
+
+I looked at the clock.
+
+12:00 AM.
+
+The train whistle sounded again.
+`
+},
+
+
+/* 10 */
+
+{
+title:"Someone Under My Bed",
+category:"Psychological",
+excerpt:"My mother told me there was nobody under the bed.",
+content:`
+When I was a child, I was terrified of the space under my bed.
+
+One night I heard breathing.
+
+I called my mother.
+
+She checked.
+
+"Nobody is there."
+
+I went back to sleep.
+
+The next night I heard it again.
+
+Breathing.
+
+Slow.
+
+Heavy.
+
+I looked under the bed.
+
+Nothing.
+
+Years passed.
+
+I forgot about it.
+
+Then I moved into a new apartment.
+
+On my first night, I heard breathing.
+
+Under my bed.
+
+I laughed.
+
+It was impossible.
+
+I checked.
+
+Nothing.
+
+Then my phone vibrated.
+
+A message from my mother.
+
+"Don't look under your bed."
+
+I called her.
+
+She answered immediately.
+
+"Listen carefully."
+
+Her voice was shaking.
+
+"When you were a child, I lied."
+
+I froze.
+
+"What was under my bed?"
+
+She whispered:
+
+"Something that looked like you."
+
+The call ended.
+
+Then something under my bed whispered:
+
+"Mom shouldn't have told you."
+`
+},
+
+
+/* 11 */
+
+{
+title:"Floor 13 Doesn't Exist",
+category:"Haunted House",
+excerpt:"The elevator stopped at a floor the building didn't have.",
+content:`
+The apartment building had twelve floors.
+
+Everyone knew that.
+
+One night I entered the elevator.
+
+I pressed 8.
+
+The elevator stopped.
+
+The doors opened.
+
+The display showed 13.
+
+I stepped out.
+
+The hallway was completely dark.
+
+Every door had the same number.
+
+1301.
+
+1302.
+
+1303.
+
+At the end of the hallway was a mirror.
+
+I walked toward it.
+
+My reflection wasn't there.
+
+Instead, I saw the elevator behind me.
+
+The doors opened.
+
+Someone stepped out.
+
+It was me.
+
+He walked toward me.
+
+I ran.
+
+The elevator doors closed.
+
+I pressed every button.
+
+Nothing worked.
+
+Then the display changed.
+
+12.
+
+11.
+
+10.
+
+9.
+
+8.
+
+The doors opened.
+
+I was back in the lobby.
+
+The security guard looked terrified.
+
+"Where did you go?"
+
+I told him.
+
+He shook his head.
+
+"There is no floor 13."
+
+Then he checked the security camera.
+
+The footage showed me entering the elevator.
+
+But I never came out.
+`
+},
+
+
+/* 12 */
+
+{
+title:"The Empty Seat",
+category:"Urban Legend",
+excerpt:"Every night one empty seat appeared on the bus.",
+content:`
+I took the same bus every night.
+
+Seat 17 was always empty.
+
+One evening, I sat there.
+
+An old woman immediately shouted:
+
+"Get up!"
+
+I ignored her.
+
+The bus started moving.
+
+Five minutes later, someone sat beside me.
+
+I couldn't see their face.
+
+They whispered:
+
+"Why did you take my seat?"
+
+I stood up.
+
+The seat was wet.
+
+I looked at the window.
+
+The reflection showed someone sitting beside me.
+
+But the seat was empty.
+
+The bus driver stopped.
+
+He looked at me.
+
+"Don't look at the seat."
+
+I asked why.
+
+He said:
+
+"Because the last person who sat there never got off."
+
+Suddenly, the bus lights went out.
+
+I heard footsteps moving through the bus.
+
+Then a voice whispered:
+
+"Next stop."
+
+The lights returned.
+
+Everyone was gone.
+
+The driver was gone.
+
+Only me.
+
+And someone sitting in Seat 17.
+
+I got off the bus.
+
+The next morning, the newspaper reported:
+
+"Bus disappears with passengers."
+
+The date was twenty years earlier.
+`
+},
+
+
+/* 13 */
+
+{
+title:"The House That Moved",
+category:"Haunted House",
+excerpt:"Every morning, the house was closer to the forest.",
+content:`
+My family bought an old house near the forest.
+
+The first morning, the house was normal.
+
+The second morning, it was twenty meters closer to the forest.
+
+My father blamed the measurements.
+
+The third morning, it moved again.
+
+We tried leaving.
+
+The road outside had disappeared.
+
+Every direction led back to the house.
+
+That night, we heard footsteps on the roof.
+
+Then someone knocked on the front door.
+
+My father opened it.
+
+There was nobody.
+
+But muddy footprints entered the house.
+
+They stopped beside my bedroom.
+
+The next morning, my parents were gone.
+
+Their beds were empty.
+
+Their shoes were still there.
+
+I ran outside.
+
+The house was now inside the forest.
+
+I found a tree with hundreds of names carved into it.
+
+My parents' names were there.
+
+So was mine.
+
+But my name had tomorrow's date beside it.
+
+I ran.
+
+The house followed me.
+
+It always does.
+`
+},
+
+
+/* 14 */
+
+{
+title:"Don't Open Door 404",
+category:"Supernatural",
+excerpt:"The hotel had no Room 404, but someone kept knocking.",
+content:`
+I worked the night shift at an old hotel.
+
+There were 403 rooms.
+
+No Room 404.
+
+One night, at exactly 4:04 AM, the hallway phone rang.
+
+I answered.
+
+A man whispered:
+
+"Please open Room 404."
+
+I laughed.
+
+"There is no Room 404."
+
+He replied:
+
+"There will be."
+
+The next morning, a new door appeared.
+
+404.
+
+I opened it.
+
+Inside was a room identical to mine.
+
+A desk.
+
+A chair.
+
+A phone.
+
+And a security monitor.
+
+The monitor showed me standing inside Room 404.
+
+But I was looking at the screen from outside.
+
+Then the person on the monitor turned around.
+
+He looked directly at me.
+
+It was me.
+
+The phone rang.
+
+I answered.
+
+My own voice said:
+
+"Please don't open the door."
+
+I looked behind me.
+
+The hallway was gone.
+
+Only Room 404 remained.
+`
+},
+
+
+/* 15 */
+
+{
+title:"The Voice in the Closet",
+category:"Psychological",
+excerpt:"Every night someone whispered my name from the closet.",
+content:`
+When I moved into my new apartment, the closet door wouldn't close.
+
+I tried everything.
+
+It always opened again.
+
+At night, I heard whispering.
+
+"Daniel."
+
+My name.
+
+I ignored it.
+
+The next night:
+
+"Daniel."
+
+Closer.
+
+The third night:
+
+"Daniel, please open the door."
+
+I finally opened the closet.
+
+Nothing.
+
+Only clothes.
+
+I laughed.
+
+Then my phone received a voice recording.
+
+I pressed play.
+
+It was my bedroom.
+
+I could hear myself sleeping.
+
+Then the closet door opened in the recording.
+
+Something whispered:
+
+"He's awake."
+
+I stopped the recording.
+
+Another notification appeared.
+
+LIVE RECORDING.
+
+I heard my own bedroom from the phone.
+
+Then the closet door slowly opened behind me.
+
+I turned.
+
+Nothing.
+
+The recording continued.
+
+A voice whispered:
+
+"He's looking at the closet."
+
+I realized the recording wasn't coming from my phone.
+
+It was coming from inside the closet.
+`
+},
+
+
+/* 16 */
+
+{
+title:"The Driver Who Never Spoke",
+category:"Urban Legend",
+excerpt:"The taxi driver knew where I was going before I told him.",
+content:`
+I got into a taxi at midnight.
+
+The driver didn't speak.
+
+I gave him my address.
+
+He started driving.
+
+After ten minutes, I realized we weren't going toward my house.
+
+I asked where we were going.
+
+He stayed silent.
+
+I checked the window.
+
+The streets were unfamiliar.
+
+Then I noticed the taxi meter.
+
+It wasn't counting money.
+
+It was counting minutes.
+
+00:13.
+
+00:12.
+
+00:11.
+
+I shouted:
+
+"Stop!"
+
+The driver finally spoke.
+
+"You have eleven minutes."
+
+"Until what?"
+
+He pointed ahead.
+
+There was a cemetery.
+
+The meter changed.
+
+00:10.
+
+I tried opening the door.
+
+Locked.
+
+The driver smiled in the mirror.
+
+I looked at his face.
+
+There was no reflection.
+
+At 00:00, the taxi stopped.
+
+I woke up in my bed.
+
+My clothes were covered in mud.
+
+On my phone was one photograph.
+
+It showed the taxi parked outside my house.
+
+The driver was standing beside it.
+
+He was holding my bedroom window open.
+`
+},
+
+
+/* 17 */
+
+{
+title:"The Red Door",
+category:"Haunted House",
+excerpt:"Everyone said never to open the red door.",
+content:`
+There was a red door at the end of my apartment hallway.
+
+Nobody knew where it led.
+
+The building manager told me:
+
+"Never open it."
+
+One night, I heard crying behind it.
+
+I knocked.
+
+The crying stopped.
+
+Then a woman whispered:
+
+"Please help me."
+
+I opened the door.
+
+Behind it was my apartment.
+
+Exactly the same.
+
+I walked inside.
+
+My furniture.
+
+My photographs.
+
+My bed.
+
+But everything was covered in dust.
+
+Then I saw myself sitting on the bed.
+
+He looked older.
+
+Much older.
+
+He said:
+
+"You shouldn't have opened the door."
+
+I asked what happened.
+
+He pointed toward the hallway.
+
+The red door was closing.
+
+"Every time someone opens it, another version of them gets trapped."
+
+I ran toward the door.
+
+Too late.
+
+It closed.
+
+I woke up inside the dusty apartment.
+
+Through the window, I could see my original apartment.
+
+Someone else was living there.
+
+He looked exactly like me.
+
+And he had just opened the red door.
+`
+},
+
+
+/* 18 */
+
+{
+title:"My Neighbor Died Yesterday",
+category:"Ghost",
+excerpt:"My neighbor knocked on my door one day after his funeral.",
+content:`
+My neighbor lived alone.
+
+One morning I heard a knock.
+
+I opened the door.
+
+He was standing outside.
+
+"Can I borrow some sugar?"
+
+I laughed.
+
+"Sure."
+
+He took the sugar and left.
+
+That afternoon, I heard people crying outside.
+
+I went downstairs.
+
+My neighbor had died that morning.
+
+I couldn't understand.
+
+I had just spoken to him.
+
+The next night, he knocked again.
+
+"Can I borrow some salt?"
+
+I refused.
+
+He smiled.
+
+"See you tomorrow."
+
+The next day, he knocked again.
+
+This time he asked:
+
+"Can I borrow your phone?"
+
+I shut the door.
+
+At midnight, my phone rang.
+
+The caller ID showed his name.
+
+I answered.
+
+His voice whispered:
+
+"Thank you for opening the door."
+
+I looked toward my front door.
+
+It was open.
+
+I had locked it.
+
+Wet footprints crossed the floor.
+
+They stopped beside my bed.
+
+Something whispered:
+
+"Tomorrow I'll need your house."
+`
+},
+
+
+/* 19 */
+
+{
+title:"The Woman at the Bus Stop",
+category:"Ghost",
+excerpt:"She asked me for directions to a place that disappeared decades ago.",
+content:`
+It was raining heavily when I saw the woman at the bus stop.
+
+She wore an old-fashioned dress.
+
+She asked:
+
+"Does the bus to West Street still come?"
+
+I told her I didn't know.
+
+She smiled.
+
+"Thank you."
+
+The bus arrived.
+
+She entered.
+
+I followed.
+
+The driver looked at me strangely.
+
+"Who are you talking about?"
+
+I pointed toward the woman.
+
+She was sitting in the last seat.
+
+The driver looked terrified.
+
+"There is nobody there."
+
+I looked again.
+
+The seat was empty.
+
+I searched online.
+
+West Street had been demolished thirty years ago.
+
+That night, I found an old newspaper.
+
+The headline said:
+
+"Woman disappears while waiting for bus."
+
+The photograph showed the same woman.
+
+The date was 1989.
+
+The next evening, she was at the bus stop again.
+
+This time she looked directly at me.
+
+"Are you coming?"
+
+Behind her was a bus with no driver.
+
+The doors opened.
+
+I heard my name from inside.
+`
+},
+
+
+/* 20 */
+
+{
+title:"The Phone in Room 404",
+category:"Supernatural",
+excerpt:"The hotel phone rang from a room that had been demolished.",
+content:`
+I worked at a hotel for three years.
+
+Room 404 had been removed during renovation.
+
+There was no room.
+
+But every night, the phone at reception rang.
+
+The screen said:
+
+ROOM 404.
+
+I ignored it.
+
+One night I answered.
+
+A woman whispered:
+
+"Please send someone."
+
+I asked where she was.
+
+She said:
+
+"Room 404."
+
+I told her it didn't exist.
+
+She began crying.
+
+"Then where am I?"
+
+The call ended.
+
+I checked the building plans.
+
+There was an old basement below where Room 404 used to be.
+
+I went downstairs.
+
+A door was there.
+
+404.
+
+I opened it.
+
+Inside was the old hotel from thirty years ago.
+
+People were walking around.
+
+Nobody noticed me.
+
+Then I saw a woman sitting at reception.
+
+She looked exactly like the woman on the phone.
+
+She looked at me.
+
+"You answered."
+
+The door behind me disappeared.
+
+The phone rang.
+
+I answered.
+
+My own voice said:
+
+"Please send someone."
+`
+},
+
+
+/* 21 */
+
+{
+title:"The Forest With No Exit",
+category:"Urban Legend",
+excerpt:"Every road out of the forest returned to the same tree.",
+content:`
+I went camping with three friends.
+
+We entered the forest on Saturday morning.
+
+By afternoon, we couldn't find the road.
+
+We walked for hours.
+
+Every path led to the same tree.
+
+Someone had carved:
+
+DO NOT WALK AFTER DARK.
+
+We laughed.
+
+At sunset, we heard a child crying.
+
+We followed the sound.
+
+We found a small house.
+
+An old woman opened the door.
+
+"You're late," she said.
+
+We asked for directions.
+
+She pointed behind us.
+
+"That way."
+
+We turned.
+
+Our three friends were standing there.
+
+But we were only four people.
+
+There were now seven.
+
+The copies smiled.
+
+We ran.
+
+The forest became completely dark.
+
+I found the road at sunrise.
+
+I was alone.
+
+Police found me two days later.
+
+They asked where my friends were.
+
+I pointed toward the forest.
+
+They showed me a photograph.
+
+My friends had disappeared three years earlier.
+
+I had entered the forest alone.
+
+I still don't know who the other three people were.
+`
+},
+
+
+/* 22 */
+
+{
+title:"The Photograph That Changed",
+category:"Psychological",
+excerpt:"Every time I looked at the photograph, one person disappeared.",
+content:`
+I found an old family photograph in a box.
+
+Five people were standing in front of a house.
+
+I didn't recognize them.
+
+The next morning, there were four people.
+
+One person had disappeared from the photograph.
+
+I thought it was damaged.
+
+The next morning, there were three.
+
+Then two.
+
+I became obsessed.
+
+I counted everyone around me.
+
+My brother.
+
+My mother.
+
+My father.
+
+My girlfriend.
+
+Four people.
+
+The next morning, my father was missing.
+
+Nobody remembered him.
+
+His photographs were gone.
+
+His clothes were gone.
+
+Even his name disappeared from family records.
+
+I checked the photograph.
+
+Only three people remained.
+
+I realized the photograph wasn't showing the past.
+
+It was showing the future.
+
+The next morning, my mother disappeared.
+
+Then my brother.
+
+Then my girlfriend.
+
+One person remained.
+
+Me.
+
+I looked at the photograph.
+
+There was nobody standing in it.
+
+Then I heard a camera shutter behind me.
+`
+},
+
+
+/* 23 */
+
+{
+title:"The Boy in the Staircase",
+category:"Ghost",
+excerpt:"Every night a little boy stood on the same staircase.",
+content:`
+The apartment building had an old staircase nobody used.
+
+Every night at 1 AM, I saw a little boy standing there.
+
+He wore a blue shirt.
+
+I asked him once:
+
+"Are you lost?"
+
+He pointed upward.
+
+"Third floor."
+
+I walked him there.
+
+He disappeared.
+
+The next night he was back.
+
+Again he pointed upward.
+
+This continued for a week.
+
+Finally I asked the building manager.
+
+He went pale.
+
+"Don't talk to that boy."
+
+"Why?"
+
+He showed me an old newspaper.
+
+A child had fallen from the third-floor staircase twenty years ago.
+
+The photograph showed the boy.
+
+Blue shirt.
+
+Same face.
+
+Same age.
+
+That night, I saw him again.
+
+He pointed upward.
+
+I followed him.
+
+At the third floor, he stopped.
+
+He pointed toward a closed door.
+
+Behind it, I heard crying.
+
+The boy whispered:
+
+"That's where I fell."
+
+The door opened by itself.
+
+There was nobody inside.
+
+Except a small bloody handprint on the ceiling.
+`
+},
+
+
+/* 24 */
+
+{
+title:"The Night Shift",
+category:"Supernatural",
+excerpt:"The security cameras showed someone walking through an empty building.",
+content:`
+I worked security at an office building.
+
+My shift was from midnight to 6 AM.
+
+One night, Camera 12 showed a man walking down the hallway.
+
+I checked the hallway.
+
+Nobody.
+
+I returned to the control room.
+
+The man appeared on Camera 13.
+
+Then Camera 14.
+
+He was walking toward me.
+
+I locked the control room door.
+
+Camera 15 showed him standing outside.
+
+I looked through the window.
+
+Nobody.
+
+Then Camera 16 showed the man inside the control room.
+
+I turned around.
+
+Nothing.
+
+The monitor suddenly went black.
+
+A message appeared:
+
+LOOK BEHIND YOU.
+
+I didn't.
+
+I called the supervisor.
+
+He answered immediately.
+
+"Leave the building."
+
+"Why?"
+
+He whispered:
+
+"That camera has been disconnected for five years."
+
+I looked at Camera 16.
+
+The man was standing behind me.
+
+I felt cold breath against my ear.
+
+Then the lights went out.
+`
+},
+
+
+/* 25 */
+
+{
+title:"The House at the End of the Road",
+category:"Haunted House",
+excerpt:"Every map showed the same empty house at the end of the road.",
+content:`
+There was a house at the end of my village road.
+
+Nobody lived there.
+
+Every map showed it.
+
+Every satellite image showed it.
+
+But nobody had ever entered.
+
+One afternoon, I decided to investigate.
+
+The front door was unlocked.
+
+Inside were hundreds of clocks.
+
+Every clock showed a different time.
+
+One showed 2:13.
+
+Another showed 7:45.
+
+Another showed midnight.
+
+At the end of the hallway was a room full of photographs.
+
+Every photograph showed me.
+
+Sleeping.
+
+Eating.
+
+Walking.
+
+Working.
+
+Some were from places I had never visited.
+
+Then I found a photograph dated tomorrow.
+
+It showed me standing inside the house.
+
+Behind me was a dark figure.
+
+I heard footsteps.
+
+I turned.
+
+Nobody.
+
+The front door slammed shut.
+
+All the clocks stopped.
+
+A voice whispered:
+
+"You're early."
+
+I ran toward the door.
+
+It opened.
+
+I stepped outside.
+
+The house was gone.
+
+But one of the photographs was now in my pocket.
+
+It showed me standing outside my own bedroom window.
+`
+},
+
+
+/* 26 */
+
+{
+title:"The Second Shadow",
+category:"Psychological",
+excerpt:"My shadow started moving before I did.",
+content:`
+I noticed it on a sunny afternoon.
+
+My shadow moved before I did.
+
+I raised my hand.
+
+The shadow raised its hand first.
+
+I stepped left.
+
+It stepped right.
+
+I thought I was imagining things.
+
+That night, the shadow appeared under my bedroom door.
+
+I wasn't standing there.
+
+The next morning, it followed me everywhere.
+
+At work.
+
+On the street.
+
+In elevators.
+
+It became darker every day.
+
+One evening, I stood in front of a mirror.
+
+I had one shadow.
+
+Then another appeared.
+
+The second shadow raised its hand.
+
+I didn't.
+
+It pointed behind me.
+
+I turned.
+
+Nothing.
+
+When I looked back, the second shadow was gone.
+
+But my normal shadow wasn't moving anymore.
+
+I stepped forward.
+
+It stayed behind.
+
+Then it whispered:
+
+"Your turn is over."
+
+The lights went out.
+
+When they came back, I was standing inside the shadow.
+
+And something wearing my body was walking outside.
+`
+},
+
+
+/* 27 */
+
+{
+title:"The Locked Bathroom",
+category:"Supernatural",
+excerpt:"The bathroom door locked itself every night at midnight.",
+content:`
+The bathroom door in my apartment had a strange lock.
+
+Every night at midnight, it locked itself.
+
+The first night, I heard knocking from inside.
+
+I opened it.
+
+Nothing.
+
+The second night, the knocking returned.
+
+Three knocks.
+
+Then five.
+
+Then seven.
+
+I asked my landlord.
+
+He refused to discuss it.
+
+Finally, one night, I stayed awake until midnight.
+
+The lock clicked.
+
+The door closed.
+
+Then someone inside whispered:
+
+"Help me."
+
+I opened the door.
+
+The bathroom mirror was covered in writing.
+
+GET OUT.
+
+I stepped backward.
+
+The reflection showed a woman standing behind me.
+
+I turned.
+
+Nothing.
+
+I looked at the mirror again.
+
+The woman was closer.
+
+She whispered:
+
+"Don't let him find you."
+
+Suddenly, the bathroom door slammed shut.
+
+Something began scratching from inside the walls.
+
+I ran from the apartment.
+
+The next morning, the landlord called.
+
+He asked:
+
+"Did you open the bathroom?"
+
+I said yes.
+
+He sighed.
+
+"Then the person inside knows where you live now."
+`
+},
+
+
+/* 28 */
+
+{
+title:"The Woman on CCTV",
+category:"Ghost",
+excerpt:"The security camera recorded a woman who wasn't physically there.",
+content:`
+I worked at a shopping mall security room.
+
+One night, CCTV Camera 22 showed a woman walking through the empty mall.
+
+She wore a red coat.
+
+I checked the hallway.
+
+Nobody.
+
+I switched cameras.
+
+She appeared again.
+
+Closer.
+
+I checked the time.
+
+3:33 AM.
+
+The woman looked directly into the camera.
+
+Then she smiled.
+
+The monitor flickered.
+
+The woman disappeared.
+
+I reviewed the footage.
+
+She had been walking toward the security room.
+
+I locked the door.
+
+A minute later, Camera 22 showed the woman standing outside.
+
+I looked at the CCTV monitor.
+
+She raised her hand.
+
+Then she waved.
+
+Someone knocked on my door.
+
+I didn't answer.
+
+The knocking stopped.
+
+I checked Camera 22.
+
+The hallway was empty.
+
+Then I noticed something.
+
+The woman was standing behind me in the CCTV reflection.
+
+I slowly turned around.
+
+Nobody.
+
+The next morning, the manager found me unconscious.
+
+The camera footage showed me talking to someone for three hours.
+
+But the security room was empty.
+`
+},
+
+
+/* 29 */
+
+{
+title:"The Stranger in Seat 9",
+category:"Urban Legend",
+excerpt:"The stranger knew things about me that nobody else knew.",
+content:`
+I was sitting on a nearly empty bus.
+
+Seat 9.
+
+A man sat beside me.
+
+He didn't look at me.
+
+He said:
+
+"Your mother called you at 8:15."
+
+I froze.
+
+Nobody knew she had called.
+
+Then he said:
+
+"You're going home because you think something is wrong."
+
+I asked:
+
+"Who are you?"
+
+He smiled.
+
+"I was sitting here yesterday."
+
+I looked at him.
+
+"I wasn't on this bus yesterday."
+
+He shook his head.
+
+"You were."
+
+Then he described my entire day.
+
+Every conversation.
+
+Every message.
+
+Every thought.
+
+I stood up.
+
+He grabbed my wrist.
+
+"Don't get off at the next stop."
+
+I pulled away.
+
+The bus stopped.
+
+I got off.
+
+The man stayed inside.
+
+As the bus drove away, I saw the driver looking terrified.
+
+I called my mother.
+
+She answered:
+
+"Where are you?"
+
+I told her.
+
+She became silent.
+
+Then she whispered:
+
+"You're supposed to be dead."
+
+I looked at the bus.
+
+Seat 9 was empty.
+
+But someone was sitting in my seat.
+`
+},
+
+
+/* 30 */
+
+{
+title:"The Door That Opens at 3 AM",
+category:"Supernatural",
+excerpt:"Every night at 3 AM, the locked door in my room opened by itself.",
+content:`
+There was a small door in my bedroom wall.
+
+It had no handle.
+
+It had always been locked.
+
+My landlord told me it was an old storage room.
+
+I ignored it.
+
+Until the first night.
+
+At exactly 3 AM, the door opened.
+
+Just a few centimeters.
+
+I closed it.
+
+The next night, it opened again.
+
+This time, I heard breathing.
+
+I pushed it shut.
+
+The third night, a voice whispered:
+
+"You're keeping me waiting."
+
+I moved my bed against the door.
+
+At 3 AM, the bed began moving.
+
+Slowly.
+
+Across the floor.
+
+The door opened.
+
+Behind it was a long hallway.
+
+At the end stood a man.
+
+He looked exactly like me.
+
+He said:
+
+"You're finally ready."
+
+I asked:
+
+"Ready for what?"
+
+He pointed behind me.
+
+My bedroom was gone.
+
+There was only the hallway.
+
+I ran toward him.
+
+He disappeared.
+
+Then I heard my bedroom door opening behind me.
+
+I turned.
+
+My bedroom was there again.
+
+But someone was sleeping in my bed.
+
+It was me.
+
+The other me opened his eyes.
+
+He whispered:
+
+"Don't wake him."
+
+Then the clock showed 3:00 AM again.
+`
+}
+
+];
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const container =
+document.getElementById("storyContainer");
+
+const modal =
+document.getElementById("modal");
+
+const modalTitle =
+document.getElementById("modalTitle");
+
+const modalStory =
+document.getElementById("modalStory");
+
+const search =
+document.getElementById("search");
+
+const filters =
+document.querySelectorAll(".filter");
+
+
+/* =====================================================
+   DISPLAY STORIES
+===================================================== */
+
+function displayStories(list){
+
+container.innerHTML="";
+
+if(list.length===0){
+
+container.innerHTML=`
+<p style="
+grid-column:1/-1;
+text-align:center;
+color:#777;
+padding:50px;
+font-size:18px;
+">
+No stories found...
+</p>
+`;
+
+return;
+
+}
+
+list.forEach((story)=>{
+
+const originalIndex =
+stories.indexOf(story);
+
+const card =
+document.createElement("div");
+
+card.className="card";
+
+card.innerHTML=`
+
+<span class="category">
+${story.category}
+</span>
+
+<h3>
+${story.title}
+</h3>
+
+<p>
+${story.excerpt}
+</p>
+
+<button
+class="read-btn"
+data-index="${originalIndex}">
+Read Story
+</button>
+
+`;
+
+card
+.querySelector(".read-btn")
+.addEventListener("click",function(){
+
+openStory(
+Number(this.dataset.index)
+);
+
+});
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =====================================================
+   OPEN STORY
+===================================================== */
+
+function openStory(index){
+
+const story =
+stories[index];
+
+if(!story){
+return;
+}
+
+modalTitle.textContent =
+story.title;
+
+modalStory.textContent =
+story.content;
+
+modal.classList.add("show");
+
+document.body.style.overflow="hidden";
+
+}
+
+
+/* =====================================================
+   CLOSE MODAL
+===================================================== */
+
+function closeModal(){
+
+modal.classList.remove("show");
+
+document.body.style.overflow="auto";
+
+}
+
+document
+.getElementById("close")
+.addEventListener(
+"click",
+closeModal
+);
+
+
+modal.addEventListener(
+"click",
+function(e){
+
+if(e.target===modal){
+closeModal();
+}
+
+}
+);
+
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key==="Escape"){
+closeModal();
+}
+
+}
+);
+
+
+/* =====================================================
+   CATEGORY FILTER
+===================================================== */
+
+filters.forEach(button=>{
+
+button.addEventListener(
+"click",
+function(){
+
+filters.forEach(btn=>{
+btn.classList.remove("active");
+});
+
+button.classList.add("active");
+
+const category =
+button.dataset.category;
+
+if(category==="All"){
+
+displayStories(stories);
+
+}else{
+
+displayStories(
+stories.filter(
+story =>
+story.category===category
+)
+);
+
+}
+
+}
+);
+
+});
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+search.addEventListener(
+"input",
+function(){
+
+const query =
+search.value
+.toLowerCase()
+.trim();
+
+const results =
+stories.filter(story=>{
+
+return (
+
+story.title
+.toLowerCase()
+.includes(query)
+
+||
+
+story.category
+.toLowerCase()
+.includes(query)
+
+||
+
+story.excerpt
+.toLowerCase()
+.includes(query)
+
+||
+
+story.content
+.toLowerCase()
+.includes(query)
+
+);
+
+});
+
+displayStories(results);
+
+});
+
+
+/* =====================================================
+   START
+===================================================== */
+
+displayStories(stories);
+
+</script>
+
+</body>
+</html>
